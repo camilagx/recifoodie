@@ -1,24 +1,24 @@
 package com.camilagx.recifoodie.model;
 
 public class User {
-	private int userId;
+	private Long userId;
 	private String username;
 	private String password;
 	private String email;
 	
 	public User() {
 	}
-	public User(int userId, String username, String password, String email) {
+	public User(Long userId, String username, String password, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 	}
-	public int getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	public String getUsername() {
