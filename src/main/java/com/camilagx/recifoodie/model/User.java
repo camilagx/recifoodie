@@ -1,9 +1,22 @@
 package com.camilagx.recifoodie.model;
 
+import javax.persistence.*;
+
+@Table
+@Entity
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long userId;
+	
+	@Column(unique=true)
 	private String username;
+	
+	@Column
 	private String password;
+
+	@Column(unique=true)
 	private String email;
 	
 	public User() {
