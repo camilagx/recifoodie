@@ -2,21 +2,31 @@ package com.camilagx.recifoodie.model;
 
 import java.sql.Date;
 
+import javax.persistence.*;
+
+@Table
+@Entity
 public class Recipe {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="recipe_id")
 	private Long recipeId;
+	
+	@Column(name="recipe_name")
 	private String name;
-	private Date postedDate;
-	private String categoryId;
+	
+	@Column(name="date_posted")
+	private Date datePosted;
 	
 	public Recipe() {
 		super();
 	}
-	public Recipe(Long recipeId, String name, Date postedDate, String categoryId) {
+	public Recipe(Long recipeId, String name, Date datePosted) {
 		super();
 		this.recipeId = recipeId;
 		this.name = name;
-		this.postedDate = postedDate;
-		this.categoryId = categoryId;
+		this.datePosted = datePosted;
 	}
 	public Long getRecipeId() {
 		return recipeId;
@@ -30,21 +40,10 @@ public class Recipe {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getPostedDate() {
-		return postedDate;
+	public Date getdatePosted() {
+		return datePosted;
 	}
-	public void setPostedDate(Date postedDate) {
-		this.postedDate = postedDate;
-	}
-	public String getCategoryId() {
-		return categoryId;
-	}
-	public void setCategoryId(String categoryId) {
-		this.categoryId = categoryId;
-	}
-	@Override
-	public String toString() {
-		return "Recipe [recipeId=" + recipeId + ", name=" + name + ", postedDate=" + postedDate + ", categoryId="
-				+ categoryId + "]";
+	public void setdatePosted(Date datePosted) {
+		this.datePosted = datePosted;
 	}
 }
