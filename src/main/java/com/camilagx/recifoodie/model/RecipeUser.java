@@ -2,26 +2,27 @@ package com.camilagx.recifoodie.model;
 
 import javax.persistence.*;
 
-@Table
 @Entity
-public class User {
+@Table
+public class RecipeUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private Long userId;
 	
-	@Column(unique=true)
+	@Column(unique=true, name="username")
 	private String username;
 	
 	@Column
 	private String password;
 
-	@Column(unique=true)
+	@Column(unique = true, name="email")
 	private String email;
 	
-	public User() {
+	public RecipeUser() {
 	}
-	public User(Long userId, String username, String password, String email) {
+	public RecipeUser(Long userId, String username, String password, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
