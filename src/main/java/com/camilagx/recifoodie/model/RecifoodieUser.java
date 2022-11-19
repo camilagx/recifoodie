@@ -1,10 +1,12 @@
 package com.camilagx.recifoodie.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 @Table
-public class RecipeUser {
+public class RecifoodieUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +22,17 @@ public class RecipeUser {
 	@Column(unique = true, name="email")
 	private String email;
 	
-	public RecipeUser() {
+	//if user is deleted, all recipes will also be deleted
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name="user_recipes",
+	joinColumns = {@JoinColumn(name = "user_id")},
+    	inverseJoinColumns = {@JoinColumn(name = "recipe_id")}
+	)
+	private List<Recipe> recipes;
+	
+	public RecifoodieUser() {
 	}
-	public RecipeUser(Long userId, String username, String password, String email) {
+	public RecifoodieUser(Long userId, String username, String password, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -53,10 +63,15 @@ public class RecipeUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public List<Recipe> getRecipes() {
+		return recipes;
+	}
+	public void setRecipes(List<Recipe> recipes) {
+		this.recipes = recipes;
+	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
-				+ "]";
+		return "RecifoodieUser [userId=" + userId + ", username=" + username + ", password=" + password + ", email="
+				+ email + ", recipes=" + recipes + "]";
 	}
-
 }

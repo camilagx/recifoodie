@@ -1,6 +1,7 @@
 package com.camilagx.recifoodie.model;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -18,6 +19,17 @@ public class Recipe {
 	
 	@Column(name="date_posted")
 	private Date datePosted;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private RecifoodieUser user;
+
+	@OneToMany
+	@JoinTable(name="recipe_category",
+			joinColumns = {@JoinColumn(name = "recipe_id")},
+	    	inverseJoinColumns = {@JoinColumn(name = "category_id")}
+	)
+	private List<Category> category;
 	
 	public Recipe() {
 		super();
@@ -46,4 +58,28 @@ public class Recipe {
 	public void setdatePosted(Date datePosted) {
 		this.datePosted = datePosted;
 	}
+	public Date getDatePosted() {
+		return datePosted;
+	}
+	public void setDatePosted(Date datePosted) {
+		this.datePosted = datePosted;
+	}
+	public RecifoodieUser getUser() {
+		return user;
+	}
+	public void setUser(RecifoodieUser user) {
+		this.user = user;
+	}
+	public List<Category> getCategory() {
+		return category;
+	}
+	public void setCategory(List<Category> category) {
+		this.category = category;
+	}
+	@Override
+	public String toString() {
+		return "Recipe [recipeId=" + recipeId + ", name=" + name + ", datePosted=" + datePosted + ", user=" + user
+				+ ", category=" + category + "]";
+	}
+	
 }
