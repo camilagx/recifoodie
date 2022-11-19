@@ -1,7 +1,16 @@
 package com.camilagx.recifoodie.model;
 
+import javax.persistence.*;
+
+@Table
+@Entity
 public class Category {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer categoryId;
+	
+	@Column(name="category_name")
 	private String name;
 	
 	public Category() {
