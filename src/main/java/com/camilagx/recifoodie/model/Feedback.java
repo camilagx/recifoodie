@@ -2,10 +2,24 @@ package com.camilagx.recifoodie.model;
 
 import java.sql.Date;
 
+import javax.persistence.*;
+
+@Entity
+@Table
 public class Feedback {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="feedback_id")
 	private Long feedbackId;
+	
+	@Column
 	private String text;
+	
+	@Column(name="date_posted")
 	private Date datePosted;
+	
+	@Column
 	private Double rating;
 	
 	public Feedback() {
