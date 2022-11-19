@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class RecifoodieUser {
+public class RecipeUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,13 +20,9 @@ public class RecifoodieUser {
 	@Column(unique = true, name="email")
 	private String email;
 	
-	@OneToOne
-	@Column(name="category")
-	private Category category;
-	
-	public RecifoodieUser() {
+	public RecipeUser() {
 	}
-	public RecifoodieUser(Long userId, String username, String password, String email) {
+	public RecipeUser(Long userId, String username, String password, String email) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -56,13 +52,6 @@ public class RecifoodieUser {
 	}
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
-	public Category getCategory() {
-		return category;
-	}
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 	@Override
 	public String toString() {
